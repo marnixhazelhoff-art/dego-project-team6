@@ -4,19 +4,19 @@ DEGO Course Project - Team 6
 
 
 
-\# # 
+\# #
 
-Marnix 
+Marnix - Data Engineer
 
-Carolina 
+Carolina - Data Scientis
 
-Nick
+Nick - Governance Officer
 
-Ines
+Ines - Project Lead
 
 
 
-\- \[ Owner ’s Name ] ( Marnix Hazelhoff )
+\- ( Marnix Hazelhoff )
 
 \## Project Description
 
