@@ -1,19 +1,17 @@
-# dego-project-team6
-
-### DEGO Course Project - Team 6
+# DEGO Course Project - Team 6
 
 ## Team & Roles
 
-# \- Product Lead: Ines Azeredo, 73259
+#### \- Product Lead: Ines Azeredo, 73259
 Project coordination, governance framing, executive summary, Q&A lead
 
-# \- Data Engineer: Marnix Hazelhoff, 71906
+#### \- Data Engineer: Marnix Hazelhoff, 71906
 Data loading, cleaning, transformation
 
-# \- Data Scientist: Carolina Diogo, 71947
+#### \- Data Scientist: Carolina Diogo, 71947
 Bias detection, fairness metrics, statistical analysis
 
-# \- Governance Officer: Nick Hammerschmid, 70159
+#### \- Governance Officer: Nick Hammerschmid, 70159
 GDPR mapping, AI Act assessment, policy recommendations
 
 ## Project Description
