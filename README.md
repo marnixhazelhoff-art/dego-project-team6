@@ -28,8 +28,7 @@ dego-project-team6/
 │   └── fairness_utils.py
 └── presentation/
     └── final deliverables
-
----
+```
 
 ---
 
@@ -96,7 +95,7 @@ A critical discovery was made regarding younger applicants. The system demonstra
 ### 3. Intersectional & Interaction Patterns
 We explored the interaction between Age, Gender, and Geography:
 * **Intersectional Gap:** The approval gap is widest for **young female applicants** in specific high-density ZIP codes.
-* **Feedback Loop Risk:** Because rejected applicants generate less future data, the model's current bias creates a "Selection Bias" loop that reinforces historical underrepresentation.
+* **Feedback Loop Risk:** Because rejected applicants generate less future data, the model's current bias creates a "Selection Bias" loop that reinforces historical under representation.
 
 ### 4. Fairness Metrics Summary
 | Metric | Audit Result | Status |
@@ -112,3 +111,39 @@ To bring NovaCred into alignment with the **EU AI Act** and **GDPR**, we recomme
 3.  **Decision Threshold Adjustment:** Implement post-processing adjustments for female applicants to satisfy legal requirements without compromising predictive power.
 
 ---
+
+## Data Privacy & Governance
+**Lead:** Nick Hammerschmid
+
+We evaluated NovaCred’s credit scoring system from a regulatory and ethical perspective, focusing on PII protection, GDPR compliance, and alignment with the EU AI Act.
+
+### 1. PII Identification & Classification
+We identified all Personal Identifiable Information (PII) processed by the system, categorized under GDPR Art. 4(1):
+
+* **Direct Identifiers:** Full Name, Email, and SSN (Critical Risk).
+* **Quasi-Identifiers:** ZIP code, IP address, and Date of Birth (Medium Risk).
+* **Protected Attributes:** Gender and Age.
+* **Behavioral Data:** Credit utilization and transaction history.
+
+### 2. Privacy-Enhancing Techniques (PEPs)
+To mitigate re-identification risks, we implemented two primary technical controls:
+
+* **Gender Pseudonymization (Art. 4(5)):** Raw gender values were replaced with neutral tokens (G1, G2, G3). A secure mapping lookup table was created to be stored separately, ensuring attribution is impossible without authorized access.
+* **Age Anonymization (Generalization):** Exact dates of birth were removed and replaced with generalized **Age Groups** (18-25, 26-40, 41-60, 60+).
+* **K-Anonymity Inspired Suppression:** Applied a threshold (k=10) to suppress small groups that could lead to unique individual identification.
+
+### 3. Regulatory Mapping: GDPR & EU AI Act
+| Regulation | Requirement | NovaCred Status | Recommended Control |
+| :--- | :--- | :--- | :--- |
+| **GDPR Art. 5(1)(c)** | Data Minimization | High (Age generalized) | Removal of raw DOB from production. |
+| **GDPR Art. 22** | Automated Decisions | Triggered (Legal effects) | Implement Human-in-the-loop oversight. |
+| **GDPR Art. 32** | Security | Critical (Plaintext PII) | Encryption of SSN and email at rest. |
+| **AI Act Annex III** | High-Risk AI System | Classified (Credit Scoring) | Compliance with Art. 9-15 obligations. |
+
+### 4. Proposed Governance Controls
+To transition NovaCred to a compliant state, we propose the following organizational measures:
+
+* **Human Oversight Mechanism (Art. 14):** Mandatory manual review for borderline credit scores and cases flagged by bias monitoring.
+* **Decision Logging:** A structured, immutable audit trail logging model versions, input features, and human override justifications.
+* **Consent Management:** A centralized registry to track applicant consent status and timestamps for transparency.
+* **Data Retention Policy:** Explicit storage limits (e.g., 24 months for rejected apps) to satisfy the Storage Limitation principle.
